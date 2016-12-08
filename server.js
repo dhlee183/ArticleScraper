@@ -4,7 +4,7 @@ var path = require("path");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
-var Note = require("./models/Note.js");
+var Comment = require("./models/Comment.js");
 var Article = require("./models/Article.js");
 var request = requre("request");
 var cheerio = require("cheerio");
@@ -92,7 +92,7 @@ app.get("/articles", function(req, res) {
 
 app.get("/articles/:id", function(req, res) {
 	Article.findOne({ "_id": req.params.id })
-	.populate("note")
+	.populate("comment")
 	.exec(function(error, doc) {
 		if (error) {
 			console.log(error);
@@ -104,14 +104,14 @@ app.get("/articles/:id", function(req, res) {
 });
 
 app.post("/articles/:id", function(req, res) {
-	var newNote = new Note(req.body);
+	var newComment = new Comment(req.body);
 
-	newNote.save(function(error, doc) {
+	newComment.save(function(error, doc) {
 		if (error) {
 			console.log(error);
 		}
 		else {
-			Article.findOneAndUpdate({ "_id": req.params.id }, { "note": doc._id})
+			Article.findOneAndUpdate({ "_id": req.params.id }, { "comment": doc._id})
 			.exec(function(err, doc) {
 				if (err) {
 					console.log(err);
