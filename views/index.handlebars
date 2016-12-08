@@ -1,10 +1,13 @@
     <div id="wrapper">
       <h1>Article Scraper</h1>
       <h2><i>Find Your Favorite ESPN Articles Here!</i></h2>
-      {{#each articles}}
+      {{#each}}
       	<div id="articles"></div>
       {{/each}}
-      {{#each comments}}	
+      {{#each}}	
       	<div id="notes"></div>
       {{/each}}
     </div>
+
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <script src="app.js"></script>
