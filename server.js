@@ -6,7 +6,7 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 var Comment = require("./models/Comment.js");
 var Article = require("./models/Article.js");
-var request = requre("request");
+var request = require("request");
 var cheerio = require("cheerio");
 var Promise = require("bluebird");
 
